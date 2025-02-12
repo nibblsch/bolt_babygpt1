@@ -46,15 +46,21 @@ export function useAuth() {
   }, []);
 
   const signIn = () => {
+    console.log('signIn method called');
+    console.log('Current showAuthModal state:', showAuthModal);
     setShowAuthModal(true);
+    console.log('AuthModal should now be visible');
   };
 
   const signOut = async () => {
+    console.log('signOut method called');
     setLoading(true);
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
+      console.log('User successfully signed out');
     } catch (error) {
+      console.error('Error signing out:', error);
       toast.error('Error signing out');
     } finally {
       setLoading(false);
