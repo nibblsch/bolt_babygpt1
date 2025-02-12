@@ -95,12 +95,12 @@ export class StripeService {
   // Available subscription plans
   static plans: SubscriptionPlan[] = [
     {
-      priceId: 'price_monthly',
+      priceId: 'prod_RkcmFAgddLLJfn',
       name: 'Monthly Plan',
       price: 29.99
     },
     {
-      priceId: 'price_annual',
+      priceId: 'prod_RkcnX78pXVNKpu',
       name: 'Annual Plan',
       price: 23.99
     }
