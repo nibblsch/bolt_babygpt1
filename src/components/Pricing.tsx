@@ -9,7 +9,7 @@ const plans = [
     name: 'Monthly',
     price: '$29.99',
     period: '/month',
-    priceId: 'price_monthly', // Replace with your actual Stripe price ID
+    priceId: 'prod_RkcmFAgddLLJfn', // Replace with your actual Stripe price ID
     features: [
       'Unlimited AI consultations',
       '24/7 availability',
