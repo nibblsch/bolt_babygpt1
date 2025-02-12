@@ -8,6 +8,17 @@ export function useAuth() {
   const [loading, setLoading] = useState(true);
   const [showAuthModal, setShowAuthModal] = useState(false);
 
+  const signIn = () => {
+    console.log('signIn method called');
+    console.log('Current showAuthModal state:', showAuthModal);
+    setShowAuthModal(true);
+    console.log('AuthModal should now be visible');
+  };
+
+  const signOut = async () => {
+    console.log('signOut method called');
+    setLoading(true);
+    
   useEffect(() => {
     // Check current session
     const checkSession = async () => {
@@ -45,16 +56,7 @@ export function useAuth() {
     };
   }, []);
 
-  const signIn = () => {
-    console.log('signIn method called');
-    console.log('Current showAuthModal state:', showAuthModal);
-    setShowAuthModal(true);
-    console.log('AuthModal should now be visible');
-  };
 
-  const signOut = async () => {
-    console.log('signOut method called');
-    setLoading(true);
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;

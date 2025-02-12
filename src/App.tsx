@@ -11,7 +11,7 @@ import { AuthModal } from './components/AuthModal';
 import { useAuth } from './hooks/useAuth';
 
 function App() {
-  const { showAuthModal, setShowAuthModal } = useAuth();
+  const { showAuthModal, setShowAuthModal, signIn, signOut  } = useAuth();
 
   return (
     <div className="min-h-screen bg-white pt-16">
@@ -35,6 +35,13 @@ function App() {
         </section>
         <MedicalDisclaimer />
       </main>
+      <button onClick={signIn} className="bg-blue-500 text-white p-2 rounded-md">
+        Sign In
+      </button>
+
+      <button onClick={signOut} className="bg-red-500 text-white p-2 rounded-md ml-4">
+        Sign Out
+      </button>
       <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </div>
   );

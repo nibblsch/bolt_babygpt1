@@ -50,6 +50,13 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
                   redirectTo={window.location.origin}
                   theme="light"
                 />
+                <button
+                  onClick={onClose}
+                  className="mt-4 w-full bg-gray-200 hover:bg-gray-300 py-2 rounded-md text-sm font-medium"
+                >
+                  Close
+                </button>
+
               </Dialog.Panel>
             </Transition.Child>
           </div>
