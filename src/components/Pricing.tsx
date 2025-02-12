@@ -21,7 +21,7 @@ const plans = [
     name: 'Annual',
     price: '$23.99',
     period: '/month',
-    priceId: 'price_annual', // Replace with your actual Stripe price ID
+    priceId: 'prod_RkcnX78pXVNKpu', // Replace with your actual Stripe price ID
     badge: 'Best Value',
     discount: 'Save 20%',
     features: [
