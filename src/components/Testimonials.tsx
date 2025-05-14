@@ -17,7 +17,7 @@ const testimonials = [
     quote: "The cost worried me at first, but BabyGPT has saved us countless pediatrician visits for minor concerns. It helps us know when something's normal and when we actually need to see a doctor.",
     author: "Emily Rodriguez",
     role: "Mom of 9-month-old",
-    image: "https://images.unsplash.com/photo-1623945194105-cd36c4433390?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+    image: "https://images.unsplash.com/photo-1623782750020-ae60c2512d7c?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
   }
 ];
 

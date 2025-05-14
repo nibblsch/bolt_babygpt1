@@ -23,7 +23,7 @@ export function Features() {
                   'Stress and uncertainty',
                 ].map((item) => (
                   <li key={item} className="flex items-center text-black">
-                    <X className="h-5 w-5 text-red-500 font-bold mr-2" />
+                    <X className="h-5 w-5 text-red-500 font-bold mr-2" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -40,7 +40,7 @@ export function Features() {
                   'Confident parenting decisions',
                 ].map((item) => (
                   <li key={item} className="flex items-center text-black">
-                    <Check className="h-5 w-5 text-green-500 font-bold mr-2" />
+                    <Check className="h-5 w-5 text-green-500 font-bold mr-2" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}
