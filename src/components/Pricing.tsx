@@ -9,7 +9,7 @@ const plans = [
     name: 'Monthly',
     price: '$29.99',
     period: '/month',
-    priceId: 'prod_RkcmFAgddLLJfn', // Replace with your actual Stripe price ID
+    priceId: 'prod_RkcmFAgddLLJfn',
     features: [
       'Unlimited AI consultations',
       '24/7 availability',
@@ -21,7 +21,7 @@ const plans = [
     name: 'Annual',
     price: '$23.99',
     period: '/month',
-    priceId: 'prod_RkcnX78pXVNKpu', // Replace with your actual Stripe price ID
+    priceId: 'prod_RkcnX78pXVNKpu',
     badge: 'Best Value',
     discount: 'Save 20%',
     features: [
@@ -34,10 +34,11 @@ const plans = [
 ];
 
 export function Pricing() {
-  const { user, signIn } = useAuth();
+  const { user, signIn, setSelectedPlan } = useAuth();
   const [loading, setLoading] = useState<string | null>(null);
 
-  const handleSubscribe = async (priceId: string) => {
+  const handleSubscribe = async (priceId: string, planType: string) => {
+    setSelectedPlan(planType);
     if (!user) {
       signIn();
       return;
@@ -123,7 +124,7 @@ export function Pricing() {
                 ))}
               </ul>
               <button
-                onClick={() => handleSubscribe(plan.priceId)}
+                onClick={() => handleSubscribe(plan.priceId, plan.name.toLowerCase())}
                 disabled={loading === plan.priceId}
                 className="mt-8 block w-full rounded-md bg-indigo-600 px-6 py-3 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-50 disabled:cursor-not-allowed"
               >
