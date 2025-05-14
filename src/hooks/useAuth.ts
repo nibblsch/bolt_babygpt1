@@ -7,14 +7,16 @@ export function useAuth() {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<string | undefined>();
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
-  const signIn = () => {
+  const signIn = (plan?: string) => {
+    if (plan) {
+      setSelectedPlan(plan);
+    }
     setShowAuthModal(true);
   };
 
   const signOut = async () => {
-    setLoading(true);
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
@@ -22,43 +24,35 @@ export function useAuth() {
     } catch (error) {
       console.error('Error signing out:', error);
       toast.error('Error signing out');
-    } finally {
-      setLoading(false);
     }
   };
 
   useEffect(() => {
-    // Check current session
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       setUser(session?.user ?? null);
       setLoading(false);
     };
 
-    // Listen for auth state changes
-    const { data: authListener } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        setUser(session?.user ?? null);
-        
-        // Handle different auth events
-        switch (event) {
-          case 'SIGNED_IN':
-            toast.success('Successfully signed in');
-            setShowAuthModal(false);
-            break;
-          case 'SIGNED_OUT':
-            toast.success('Successfully signed out');
-            break;
-          case 'USER_UPDATED':
-            setUser(session?.user ?? null);
-            break;
-        }
+    const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      setUser(session?.user ?? null);
+      
+      switch (event) {
+        case 'SIGNED_IN':
+          toast.success('Successfully signed in');
+          setShowAuthModal(false);
+          break;
+        case 'SIGNED_OUT':
+          toast.success('Successfully signed out');
+          break;
+        case 'USER_UPDATED':
+          setUser(session?.user ?? null);
+          break;
       }
-    );
+    });
 
     checkSession();
 
-    // Cleanup subscription
     return () => {
       authListener.subscription.unsubscribe();
     };
