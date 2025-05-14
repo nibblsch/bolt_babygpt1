@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { SignupForm } from './SignupForm';
 import { posthog } from '../../lib/posthog';
+import toast from 'react-hot-toast';
 
 interface AuthModalProps {
   isOpen: boolean;

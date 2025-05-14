@@ -49,8 +49,8 @@ export function useAuth() {
           case 'SIGNED_OUT':
             toast.success('Successfully signed out');
             break;
-          case 'SIGN_IN_ERROR':
-            toast.error('Error signing in');
+          case 'USER_UPDATED':
+            setUser(session?.user ?? null);
             break;
         }
       }
