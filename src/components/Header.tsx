@@ -18,7 +18,6 @@ export function Header() {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      // Update URL without triggering a page reload
       window.history.pushState({}, '', href);
     }
   };
@@ -79,7 +78,7 @@ export function Header() {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 pb-3 pt-2 px-4">
+            <div className="space-y-1 pb-3 pt-2">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
@@ -89,25 +88,27 @@ export function Header() {
                     e.preventDefault();
                     scrollToSection(e, item.href);
                   }}
-                  className="block py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                  className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
                 >
                   {item.name}
                 </Disclosure.Button>
               ))}
               {user ? (
-                <button
+                <Disclosure.Button
+                  as="button"
                   onClick={signOut}
-                  className="block w-full text-left py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                  className="block w-full px-4 py-2 text-left text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
                 >
                   Sign out
-                </button>
+                </Disclosure.Button>
               ) : (
-                <button
+                <Disclosure.Button
+                  as="button"
                   onClick={signIn}
-                  className="block w-full text-left py-2 text-base font-medium text-gray-500 hover:bg-gray-50 hover:text-gray-900"
+                  className="block w-full px-4 py-2 text-left text-base font-medium text-indigo-600 hover:bg-gray-50"
                 >
                   Sign in
-                </button>
+                </Disclosure.Button>
               )}
             </div>
           </Disclosure.Panel>
