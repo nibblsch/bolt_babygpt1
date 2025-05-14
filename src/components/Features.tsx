@@ -22,8 +22,8 @@ export function Features() {
                   'Information overload',
                   'Stress and uncertainty',
                 ].map((item) => (
-                  <li key={item} className="flex items-center">
-                    <X className="h-5 w-5 text-red-500 mr-2" />
+                  <li key={item} className="flex items-center text-black">
+                    <X className="h-5 w-5 text-red-500 font-bold mr-2" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -39,8 +39,8 @@ export function Features() {
                   'Clear, actionable advice',
                   'Confident parenting decisions',
                 ].map((item) => (
-                  <li key={item} className="flex items-center">
-                    <Check className="h-5 w-5 text-green-500 mr-2" />
+                  <li key={item} className="flex items-center text-black">
+                    <Check className="h-5 w-5 text-green-500 font-bold mr-2" />
                     <span>{item}</span>
                   </li>
                 ))}
