@@ -10,9 +10,7 @@ export function useAuth() {
   const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
   const signIn = (plan?: string) => {
-    if (plan) {
-      setSelectedPlan(plan);
-    }
+    setSelectedPlan(plan || null);
     setShowAuthModal(true);
   };
 
@@ -37,17 +35,11 @@ export function useAuth() {
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
       
-      switch (event) {
-        case 'SIGNED_IN':
-          toast.success('Successfully signed in');
-          setShowAuthModal(false);
-          break;
-        case 'SIGNED_OUT':
-          toast.success('Successfully signed out');
-          break;
-        case 'USER_UPDATED':
-          setUser(session?.user ?? null);
-          break;
+      if (event === 'SIGNED_IN') {
+        setShowAuthModal(false);
+        toast.success('Successfully signed in');
+      } else if (event === 'SIGNED_OUT') {
+        toast.success('Successfully signed out');
       }
     });
 
